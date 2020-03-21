@@ -1,5 +1,13 @@
 Status: Not quite finished, cleaning it up, messy/quick&dirty
 
+# coronacampus-reactivesearch
+
+Collect freely accessible teaching/learning resources with a simple google drive spreadsheet, import them to elastic search (with a little help of php and codeigniter-cli), offer search interface with reactive-search (react).
+
+Made possible by people contributing to Open Source.
+
+If you change the data model in the spreadsheet, you need to customize `controllers/coronacampus/Cli.php` as well as the search interface data model in `frontend-reactive-search`.
+
 ## Frontend: Access elasticsearch with reactivesearch
 
 Check out `frontend-reactive-search` folder, the interface will be built using `npm run build` into to the docs/ folder, which is the base for Github Pages generation.
