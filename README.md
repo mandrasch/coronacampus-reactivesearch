@@ -1,3 +1,6 @@
+
+⚠️ Work in progress
+
 # coronacampus-reactivesearch
 
 Collect freely accessible teaching/learning resources with a simple google drive spreadsheet and display it with a nice search interface for educators and learners.
@@ -54,12 +57,12 @@ $config['appbase_api_url_coronacampus-test'] = 'https://scalr.api.appbase.io';
 
 ### 3. PHP/CLI: Import Google Spreadsheets data (as JSON) into elasticsearch/appbase.io
 
-To import the data collected in the spreadsheet you'll need access to a php commandline, no full webserver needed. 
+To import the data collected in the spreadsheet you'll need access to a php commandline, no full webserver needed.
 
 The importer is based on codeigniter & it's CLI capabilities:
 
 ```
-cd codeigniter-cli/ 
+cd codeigniter-cli/
 php index.php [controller] [method]
 ```
 
