@@ -85,21 +85,49 @@ class Cli extends CI_Controller
 
 					custom_log_message("Entry: ".$entry['gsx$titel']['$t']);
 
-          // !!!!
-          // 2DO: if comma separated values exist put them into array
-          // !!!
+          // 2DO: define fields which can have multiple values (comma separated)
+          $fields_single = array(
+            'Titel' => $entry['gsx$titel']['$t'],
+            'url' => $entry['gsx$url']['$t'],
+            'beschreibung'=>$entry['gsx$beschreibung']['$t'],
+            'jahr'=>$entry['gsx$jahroptional']['$t']
+          );
 
-          
-					$sanitizedObjectData = array(
-						'Titel' => $entry['gsx$titel']['$t'],
-						'url' => $entry['gsx$url']['$t'],
+          $fields_multiple = array(
             'fachgebiet'=> $entry['gsx$fachgebiet']['$t'],
             'art'=>$entry['gsx$art']['$t'],
             'tags'=>$entry['gsx$tags']['$t'],
             'fachgebiet-destatis'=>$entry['gsx$fachgebiet-nrdestatisoptional']['$t'],
-            'fachgebiet-destatis'=>$entry['gsx$sprache']['$t'],
-            'jahr'=>$entry['gsx$jahroptional']['$t']
-					);
+            'sprache'=>$entry['gsx$sprache']['$t'],
+          );
+
+          $sanitizedObjectData = array();
+
+          foreach($fields_single as $fieldName => $fieldValueString){
+            // check if empty
+
+            $fieldValueSanitized = filter_var($fieldValueString, FILTER_SANITIZE_STRING);
+
+            $sanitizedObjectData["".$fieldName.""] = $fieldValueSanitized;
+          }
+
+          foreach($fields_multiple as $fieldName => $fieldValueString){
+            // check if empty
+
+            if(strpos($fieldValueString,",")!=false){
+              $fieldValueArray = explode(",", $fieldValueString);
+              $fieldValueSanitized = filter_var_array($fieldValueArray,FILTER_SANITIZE_STRING);
+            }else{
+              $fieldValueSanitized = array(filter_var($fieldValueString, FILTER_SANITIZE_STRING));
+            }
+
+            $sanitizedObjectData["".$fieldName.""] = $fieldValueSanitized;
+          }
+
+            /*custom_log_message("Sanizited entry: ".print_r($fieldValueSanitized,true));*/
+
+          // 2DO: rename to array
+          custom_log_message("Sanizited object: ".print_r($sanitizedObjectData,true));
 
           // 2DO: populate these fields
 
