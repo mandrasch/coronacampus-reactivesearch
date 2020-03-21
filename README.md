@@ -36,12 +36,12 @@ b) coronacampus-test
 /config/development/appbase.php
 
 ```
-// production
+// production database
 $config['appbase_auth_string_read_coronacampus'] = "zvF51XXXb:cf198494-177dXXXX";
 $config['appbase_auth_string_write_coronacampus'] = "nBYXX4sq:889738e4-56b5-XXXX";
-$config['appbase_app_name_coronacampus-test'] = 'coronacampus-test';
-$config['appbase_api_url_coronacampus-test'] = 'https://scalr.api.appbase.io';
-// test
+$config['appbase_app_name_coronacampus'] = 'coronacampus';
+$config['appbase_api_url_coronacampus'] = 'https://scalr.api.appbase.io';
+// test database
 $config['appbase_auth_string_read_coronacampus-test'] = "zvFXXb:cf198494-177dXXXX";
 $config['appbase_auth_string_write_coronacampus-test'] = "nBY9864sq:889738e4-56b5-XXXX";
 $config['appbase_app_name_coronacampus-test'] = 'coronacampus-test';
@@ -51,7 +51,7 @@ $config['appbase_api_url_coronacampus-test'] = 'https://scalr.api.appbase.io';
 3. Add config (read-api) for frontend-reactivesearch/public/index.html
 
 ```
-2DO: JAVASCRIPT VARS
+2DO: JAVASCRIPT VARS in index.html
 ```
 
 
