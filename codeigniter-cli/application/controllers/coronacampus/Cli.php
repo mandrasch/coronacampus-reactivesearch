@@ -12,7 +12,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 // 1. FLUSH crawltest (2DO: use coronacampus commands)
 // /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
 // 2. TRY loading sample data
-/
+
 
 // Pro tipp for mac - use caffeinate command so that MAMP won't shutdown
 // caffeinate
@@ -136,4 +136,5 @@ class Cli extends CI_Controller
             }
         }
     }*/
+
 }
