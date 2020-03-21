@@ -3,7 +3,7 @@
 
 # coronacampus-reactivesearch
 
-Collect freely accessible teaching/learning resources with a simple google drive spreadsheet and display it with a nice search interface for educators and learners.
+Collect freely accessible teaching/learning resources with a simple google drive spreadsheet and display it with a nice search interface for educators and learners (no webserver needed, you can just use GitHub pages).
 
 - Collect data: [Google Drive Spreadsheet (Template)](https://docs.google.com/spreadsheets/d/1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao/edit?usp=sharing)
 - Search interface: [https://programmieraffe.github.io/coronacampus-reactivesearch/](https://programmieraffe.github.io/coronacampus-reactivesearch/)
