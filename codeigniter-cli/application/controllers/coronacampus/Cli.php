@@ -10,7 +10,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 // 2DO: THIS NEEDS TO BE UPDATED
 // TEST CRAWLING (MAMP OSX)
 // 1. FLUSH crawltest (2DO: use coronacampus commands)
-// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php oerhoernchen/cli flush_crawltest
+// /Applications/MAMP/bin/php/php7.2.1/bin/php index.php coronacampus/cli flush_testindex
 // 2. TRY loading sample data
 
 
@@ -28,6 +28,8 @@ class Cli extends CI_Controller
         if (!is_cli()) {
             show_error("Should only be access from CLI");
         }
+
+
     }
 
 		/* takes public google spreadsheet url (json), see https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -76,18 +78,27 @@ class Cli extends CI_Controller
 
 				foreach($responseJson['feed']['entry'] as $entry){
 
-					// 2DO: convert license url to data entry
-          // 2DO: Fachbereich-NR (map it)
-          // 2DO: Typ1, Typ2, Typ3
-          // 2DO: Sprache
-          // 2DO: Tags
+					// 2DO: convert license url to data entry   [gsx$lizenz-urloptional]
+
+
           // 2DO: SANITIZE filter_var($projectkey, FILTER_SANITIZE_STRING);
 
 					custom_log_message("Entry: ".$entry['gsx$titel']['$t']);
 
+          // !!!!
+          // 2DO: if comma separated values exist put them into array
+          // !!!
+
+          
 					$sanitizedObjectData = array(
 						'Titel' => $entry['gsx$titel']['$t'],
-						'url' => $entry['gsx$url']['$t']
+						'url' => $entry['gsx$url']['$t'],
+            'fachgebiet'=> $entry['gsx$fachgebiet']['$t'],
+            'art'=>$entry['gsx$art']['$t'],
+            'tags'=>$entry['gsx$tags']['$t'],
+            'fachgebiet-destatis'=>$entry['gsx$fachgebiet-nrdestatisoptional']['$t'],
+            'fachgebiet-destatis'=>$entry['gsx$sprache']['$t'],
+            'jahr'=>$entry['gsx$jahroptional']['$t']
 					);
 
           // 2DO: populate these fields
@@ -104,11 +115,11 @@ class Cli extends CI_Controller
         return;
     }
 
-    public function flush_crawltest()
+    public function flush_testindex()
     {
-        $this->load->library('oerhoernchen/appbase');
-        custom_log_message("Flush the crawltest-index");
-        $this->appbase->flush_index("highereducation-crawltest");
+        $this->load->library('coronacampus/appbase');
+        custom_log_message("Flush the test index");
+        $this->appbase->flush_testindex();
     }
 
     // tmp_function,

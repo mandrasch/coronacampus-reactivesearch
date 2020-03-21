@@ -28,22 +28,16 @@ class Appbase {
 	}
 
 	// 2DO: Be careful ;-)
-	public function flush_index($index){
-		log_message('debug', "Flush index: ".$index);
+	public function flush_testindex(){
+
 		$curl = curl_init();
 
 		$this->CI->config->load('appbase');
+		$index = $this->CI->config->item('appbase_app_name_coronacampus-test');
+		log_message('debug', "Flush index: ".$index);
 
-		// for security reasons we just flush crawltest by now
-		switch ($index) {
-		case 'highereducation-crawltest':
-			$appbase_auth_string = $this->CI->config->item('appbase_auth_string_write_' . $index);
-			$appbase_api_url = $this->CI->config->item('appbase_api_url_official') . '/' . $this->CI->config->item('appbase_app_name_' . $index) ;
-			break;
-		default:
-			show_error('Unexpected index value', 500);
-			break;
-		}
+		$appbase_auth_string = $this->CI->config->item('appbase_auth_string_write_coronacampus-test');
+		$appbase_api_url = $this->CI->config->item('appbase_api_url_coronacampus-test') . '/' . $this->CI->config->item('appbase_app_name_coronacampus-test');
 
 		$request_params = array(
 			'query'=> array(
@@ -134,7 +128,7 @@ class Appbase {
 		$request_params = array(
 			'query'=> array(
 				'match'=>array(
-					'main_url.keyword'=>$sanitized_object_array['url']
+					'url.keyword'=>$sanitized_object_array['url']
 				)
 			)//,
 			//'size'=>0

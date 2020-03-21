@@ -183,6 +183,26 @@ class App extends Component {
                     size={3}
                     />*/}
 
+                    <MultiList
+                      componentId="list-1"
+                      dataField="art.keyword"
+                      size={100}
+                      style={{
+                        marginBottom: 20
+                      }}
+                      title="Art"
+                    />
+
+                    <MultiList
+                      componentId="list-2"
+                      dataField="tags.keyword"
+                      size={100}
+                      style={{
+                        marginBottom: 20
+                      }}
+                      title="Tags"
+                    />
+
                     <MultiDataList
                     componentId="licenseTypeFilter"
                     dataField = "license_type"

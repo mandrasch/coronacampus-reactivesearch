@@ -1,29 +1,30 @@
-Status: Not quite finished, cleaning it up, messy/quick&dirty
-
 # coronacampus-reactivesearch
 
-Collect freely accessible teaching/learning resources with a simple google drive spreadsheet, import them to elastic search (with a little help of php and codeigniter-cli), offer search interface with reactive-search (react).
+Collect freely accessible teaching/learning resources with a simple google drive spreadsheet and display it with a nice search interface for educators and learners.
 
-Made possible by people contributing to Open Source.
+- Collect data: [Google Drive Spreadsheet (Template)](https://docs.google.com/spreadsheets/d/1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao/edit?usp=sharing)
+- Search interface: [https://programmieraffe.github.io/coronacampus-reactivesearch/index.html]()
 
-Search interface: https://programmieraffe.github.io/coronacampus-reactivesearch/index.html
+Beware: quick & dirty solution, no warranty, not a professional product
 
-Contribute data: https://docs.google.com/spreadsheets/d/1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao/edit?usp=sharing
-(Clone spreadsheet, make it publicy available and let me know)
+## Important notes
 
-If you change the data model in the spreadsheet, you need to customize `controllers/coronacampus/Cli.php` as well as the search interface data model in `frontend-reactive-search`.
+If you change the column names in the spreadsheet, you need to customize `controllers/coronacampus/Cli.php` as well as the search interface data model in `frontend-reactive-search` (see foreach-loop for entries).
 
-## Frontend: Access elasticsearch with reactivesearch
+## Set it up yourself
 
-Check out `frontend-reactive-search` folder, the interface will be built using `npm run build` into to the docs/ folder, which is the base for Github Pages generation.
+### 1. Google Spreadsheet for URL collection
 
-## CLI: Import Google Spreadsheets into elasticsearch (JSON)
+[Google Drive Spreadsheet (Template)](https://docs.google.com/spreadsheets/d/1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao/edit?usp=sharing)
 
-Basically two files are important (as well as config files):
-- controllers/coronacampus/Cli.php
-- libraries/coronacampus/Appbase.php
+1. Copy this
+2. Make it publicly available
+3. Get ID for spreadsheet + worksheet
+4. Test if URL is correct
 
-1. Create to elastic search indexes:
+### 2. Create appbase.io elasticsearch apps/databases
+
+1. Create two elastic search indexes:
 a) coronocampus
 b) coronacampus-test
 
@@ -43,6 +44,29 @@ $config['appbase_auth_string_write_coronacampus-test'] = "nBY9864sq:889738e4-56b
 $config['appbase_app_name_coronacampus-test'] = 'coronacampus-test';
 $config['appbase_api_url_coronacampus-test'] = 'https://scalr.api.appbase.io';
 ```
+
+3. Add config (read-api) for frontend-reactivesearch/public/index.html
+
+```
+2DO: JAVASCRIPT VARS
+```
+
+
+### 3. PHP/CLI: Import Google Spreadsheets data (as JSON) into elasticsearch/appbase.io
+
+To import the data collected in the spreadsheet you'll need access to a php commandline, no full webserver needed. 
+
+The importer is based on codeigniter & it's CLI capabilities:
+
+```
+cd codeigniter-cli/ 
+php index.php [controller] [method]
+```
+
+Basically two files are important (as well as config files):
+- controllers/coronacampus/Cli.php
+- libraries/coronacampus/Appbase.php
+
 
 3. Try to insert sample data into your test index:
 
@@ -70,3 +94,14 @@ use tail -f, everything before that will be outputted to command line with custo
 
 Alternatives for ElasticSearch hosting appbase.io:
 https://www.stackhero.io/
+
+### 4. Frontend: Access data with reactivesearch interface (Github Pages docs/)
+
+Check out `frontend-reactive-search` folder, the interface will be built using `npm run build` into to the docs/ folder, which is the base for Github Pages generation.
+
+1. Add the read-API values from appbase
+2. npm install
+3. npm build (will create files in docs/ folder on root level)
+4. push to github
+5. activate Github pages
+6. select option "use docs/ folder" for github pages
