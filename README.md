@@ -1,5 +1,13 @@
 Status: Not quite finished, cleaning it up, messy/quick&dirty
 
+## Frontend: Access elasticsearch with reactivesearch
+
+Check out `frontend-reactive-search` folder, the interface will be built using `npm run build` into to the docs/ folder, which is the base for Github Pages generation.
+
+Search interface: https://programmieraffe.github.io/coronacampus-reactivesearch/index.html
+
+## CLI: Import Google Spreadsheets into elasticsearch (JSON)
+
 Basically two files are important (as well as config files):
 - controllers/coronacampus/Cli.php
 - libraries/coronacampus/Appbase.php
