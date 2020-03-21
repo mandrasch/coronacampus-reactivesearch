@@ -6,13 +6,16 @@ Collect freely accessible teaching/learning resources with a simple google drive
 
 Made possible by people contributing to Open Source.
 
+Search interface: https://programmieraffe.github.io/coronacampus-reactivesearch/index.html
+
+Contribute data: https://docs.google.com/spreadsheets/d/1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao/edit?usp=sharing
+(Clone spreadsheet, make it publicy available and let me know)
+
 If you change the data model in the spreadsheet, you need to customize `controllers/coronacampus/Cli.php` as well as the search interface data model in `frontend-reactive-search`.
 
 ## Frontend: Access elasticsearch with reactivesearch
 
 Check out `frontend-reactive-search` folder, the interface will be built using `npm run build` into to the docs/ folder, which is the base for Github Pages generation.
-
-Search interface: https://programmieraffe.github.io/coronacampus-reactivesearch/index.html
 
 ## CLI: Import Google Spreadsheets into elasticsearch (JSON)
 
@@ -51,21 +54,19 @@ Run php codeigniter cli on command line (example for Mac OSX & MAMP):
 
 ` /Applications/MAMP/bin/php/php7.2.1/bin/php index.php coronacampus/cli loadspreadsheet https%3A%2F%2Fspreadsheets.google.com%2Ffeeds%2Flist%2F1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao%2Fod6%2Fpublic%2Fvalues%3Falt%3Djson`
 
-
-(For Appbase API actions the logs will be in /application/logs
+(For Appbase API actions: the logs will be in /application/logs
 use tail -f, everything before that will be outputted to command line with custom_log_message)
 
 4. Check data in appbase dashboard (Develop > Browse data)
 
-5. If everything is working, push to production, append 1 as parameter for cli:
+5. If everything is working, push to production, append 1 as parameter for cli call:
 
 ```
 /Applications/MAMP/bin/php/php7.2.1/bin/php index.php coronacampus/cli loadspreadsheet https%3A%2F%2Fspreadsheets.google.com%2Ffeeds%2Flist%2F1kntJWO9iP6rL6WFqKXNsINoa923LjoDfEz38_NA4-ao%2Fod6%2Fpublic%2Fvalues%3Falt%3Djson 1
 ```
 
 5. Provide end user access
-(e.g. via Github Project reactive-search, fork it or use appbase search preview)
+(e.g. via Github Project reactive-search)
 
-
-Alternatives for ElasticSearch hosting:
-stackhero
+Alternatives for ElasticSearch hosting appbase.io:
+https://www.stackhero.io/
