@@ -1,6 +1,13 @@
 
 ⚠️ Work in progress
 
+
+Please see: https://github.com/programmieraffe/coronacampus-reactivesearch-heroku
+
+
+
+OLD
+
 # coronacampus-reactivesearch
 
 Collect freely accessible teaching/learning resources with a simple google drive spreadsheet and display it with a nice search interface for educators and learners (no webserver needed, you can just use GitHub pages).
